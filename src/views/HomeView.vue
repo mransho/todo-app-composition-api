@@ -1,5 +1,5 @@
 <template>
-  <h1>This is Home</h1>
+  <h1>This is Home XXX</h1>
   <MyHome />
 </template>
 
