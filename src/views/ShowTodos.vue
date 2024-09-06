@@ -1,5 +1,5 @@
 <template>
   <div class="show-todos">
-    <h1>show todos</h1>
+    <h1>ShowTodos</h1>
   </div>
 </template>

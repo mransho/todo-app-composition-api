@@ -9,6 +9,14 @@ const routes = [
       title: "home",
     },
   },
+  {
+    name: "ShowTodos",
+    path: "/Show-Todos",
+    component: () => import("@/views/ShowTodos.vue"),
+    meta: {
+      title: "ShowTodos",
+    },
+  },
 ];
 
 const router = createRouter({
