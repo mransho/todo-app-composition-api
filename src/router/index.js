@@ -14,7 +14,7 @@ const routes = [
     path: "/Show-Todos",
     component: () => import("@/views/ShowTodos.vue"),
     meta: {
-      title: "ShowTodos",
+      title: "Show Todos",
     },
   },
 ];
