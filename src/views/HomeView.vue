@@ -61,7 +61,7 @@ const addTodo = () => {
     createdAt: "",
     isCompleted: false,
   };
-  console.log(todosList.value);
+  // console.log(todosList.value);
 };
 </script>
 

@@ -8,7 +8,7 @@ const todosFunction = () => {
   //Set to locat storage
   const addToLocalSt = () => {
     localStorage.setItem("todos", JSON.stringify(todosList.value));
-    // console.log(todosList.value);
+    console.log(todosList.value);
   };
 
   // update todo list
@@ -16,12 +16,13 @@ const todosFunction = () => {
     if (localStorage.getItem("todos")) {
       todosList.value = JSON.parse(localStorage.getItem("todos"));
     }
+    console.log(todosList.value);
   };
 
   onMounted(() => {
     updateTodos();
   });
 
-  return { todosList, addToLocalSt };
+  return { todosList, addToLocalSt, updateTodos };
 };
 export default todosFunction;

@@ -1,7 +1,7 @@
 <template>
   <div class="show-todos">
     <h1>ShowTodos</h1>
-    <table v-if="todoList.length > 0">
+    <table v-if="todosList.length > 0">
       <thead>
         <tr>
           <th>text</th>
@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="(todo, index) in todoList"
+          v-for="(todo, index) in todosList"
           :key="todo.id"
           :style="`${
             todo.isCompleted
@@ -70,29 +70,16 @@
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import todosMixin from "@/mixins/todo";
 
-//data
-const todoList = ref([]);
+const { todosList, addToLocalSt } = todosMixin();
 
 //methods
 
-// update todo list
-
-const updateTodos = () => {
-  if (localStorage.getItem("todos")) {
-    todoList.value = JSON.parse(localStorage.getItem("todos"));
-  }
-};
-
 //delet doto
 const deletTodo = (index) => {
-  todoList.value.splice(index, 1);
+  todosList.value.splice(index, 1);
   addToLocalSt();
-};
-//Set to locat storage
-const addToLocalSt = () => {
-  localStorage.setItem("todos", JSON.stringify(todoList.value));
 };
 
 //Mark as completed
@@ -100,13 +87,6 @@ const markCompleted = (todo) => {
   todo.isCompleted = !todo.isCompleted;
   addToLocalSt();
 };
-
-// Hooks
-import { onMounted } from "vue";
-
-onMounted(() => {
-  updateTodos();
-});
 </script>
 <style scoped lang="scss">
 h1,
