@@ -8,7 +8,6 @@
         name=""
         id=""
         placeholder="Enter your todo"
-        required
       />
       <br />
       <input
@@ -16,14 +15,12 @@
         v-model="todoObject.from"
         placeholder="form"
         style="margin-top: 20px"
-        required
       />
       <input
         type="date"
         placeholder="to"
         v-model="todoObject.to"
         style="margin-left: 10px; margin-bottom: 10px"
-        required
       />
       <br />
       <input type="submit" value="add" />
@@ -33,23 +30,38 @@
 
 <script setup>
 import { ref } from "vue";
+import todosMixin from "@/mixins/todo";
+
+const { todosList, addToLocalSt } = todosMixin();
 
 //data
 
-const todoList = ref([]);
 const todoObject = ref({
+  id: "",
   text: "",
   from: "",
   to: "",
   createdAt: "",
+  isCompleted: false,
 });
 
 //methods
 
+//add toDo
 const addTodo = () => {
+  todoObject.value.id = todosList.value.length + 1;
   todoObject.value.createdAt = new Date();
-  todoList.value.push(todoObject.value);
-  console.log(todoList.value);
+  todosList.value.push(todoObject.value);
+  addToLocalSt();
+  todoObject.value = {
+    id: "",
+    text: "",
+    from: "",
+    to: "",
+    createdAt: "",
+    isCompleted: false,
+  };
+  console.log(todosList.value);
 };
 </script>
 
