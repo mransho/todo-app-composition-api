@@ -16,7 +16,6 @@ const todosFunction = () => {
     if (localStorage.getItem("todos")) {
       todosList.value = JSON.parse(localStorage.getItem("todos"));
     }
-    console.log(todosList.value);
   };
 
   onMounted(() => {
