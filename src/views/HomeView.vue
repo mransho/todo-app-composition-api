@@ -1,5 +1,6 @@
 <template>
   <div class="homePage">
+    <span>test</span>
     <h1>add new todos</h1>
     <form action="" @submit.prevent="addTodo">
       <input
